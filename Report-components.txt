@@ -1,0 +1,11 @@
+The ten main points a data science report should contain are as follows.
+Cover page
+Table of Contents (ToC)
+Abstract Summary
+Introduction
+Research Methodology
+Results
+Discussion
+Conclusion
+References
+Acknowledgement and Appendices (if needed)

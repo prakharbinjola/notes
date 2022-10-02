@@ -1,0 +1,24 @@
+1.	select black line between col headers alt + HOI
+
+2.	press F2 to go to the formula bar
+
+3.	press F4 between each cell reference to add dollar symbol
+
+4.	copy by value to avoid reference error as formula are not copied
+
+5.	shift + ctrl + down and ctrl + D to autofill
+	OR
+	*** shift to select the cells + F2 to go to formula bar + crtl + enter
+
+6.	Calculate grade with VLOOKUP
+	lookup table must be sorted in ascending order, and VLOOKUP must be set to approximate match mode.
+
+7.	Get quarter from date
+	=ROUNDUP(MONTH(B5)/3,0)
+
+8.	Find the name for the max value in another col
+	use VLOOKUP(MAX(valuecol),t,i,0)
+
+9.	INDEX needs numeric positions.
+	MATCH finds those positions.
+	MATCH is nested inside INDEX.

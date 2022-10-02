@@ -1,0 +1,59 @@
+1.
+Missing values
+
+drop
+df.dropna(subset = ['col'], axis = 0, inplace = True)
+# defaults, axis = 0, inplace = False
+
+**df.reset_index(drop = True, inplace = True)
+
+replace
+mean = df['col'].mean()
+df['col'].replace(np.nan, mean, inplace = True)
+
+** df['col'].flllna(mean, inplace = True)
+
+
+
+2.
+Data formatting
+
+df.rename(columns = {'old col': 'new col'}, inplace = True)
+
+data type
+df.dtypes
+df['col'] = df['col'].astype('int')
+
+** df['Date'] = pd.to_datetime(df['Date'])
+
+
+3.
+Data Normalization
+
+simple feature scaling
+df['col'] = df['col']/df['col'].max()
+
+min-max
+df['col'] = (df['col'] - df['col'].min() )/(df['col'].max() - df['col'].min() )
+
+z-score
+df['col'] = (df['col'] - df['col'].mean() ) / df['col'].std()
+
+
+
+4.
+Binning
+bins = np.linspace(min(df['col']), max(df['col']), 4)
+group_names = ['Low', 'Medium', 'High']
+df['col-binned'] = pd.cut(df['col'], bins = bins, labels = group_names, include_lowest = True)
+
+# defaults include_lowest = False
+
+
+
+5.
+categorical to numerical
+dummy_variable = pd.get_dummies(df['col'])
+df = pd.concat([df, dummy_variable], axis = 1)
+# default axis = 0
+df.drop('col', axis = 1, inplace = True)

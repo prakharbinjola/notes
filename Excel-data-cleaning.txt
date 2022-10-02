@@ -1,0 +1,34 @@
+1.	Spellcheck - Review - Spelling
+
+2.	Blank rows - Select whole worksheet - Data - Filter - Select col header filter - Select blank - Delete
+
+3.	Duplicate rows
+	a.	Home - Conditional Formatting - Highlight cell rules - duplicate values
+	b.	Select col - Data - Remove duplicates
+
+4.	Change data - Home - Find and Replace
+
+5.	Change case - Insert col - Change cases(proper, lower, upper) - Copy and paste as values on the original col - Delete dummy col
+
+6.	Change format - Home - Number format - Format painter
+
+7.	Spaces
+	a.	Double spaces - Home - Find and Replace
+	b.	Beginning or end - Insert col - =TRIM - Paste as values
+
+8.	Combining col - Data - Flash fill
+
+9.	Splitting col 
+	a.	Data - Text to Columns
+	b.	=LEFT(A2, SEARCH(" ", A2,1)) and =RIGHT(A2, LEN(A2) - SEARCH(" ", A2,1))
+
+10.	Replace # Formula Errors With 0, Blank Or Certain Text In Excel
+	Find and Select - Go to Special - Errors - Enter the replacement text - ctrl + enter
+
+
+Filter using if, ifs, countif, sumif
+=IF(A2="Shipped", "Yes", "No")
+=IFS(A2=0, "Zero", A2>0, "Positive", A2<0, "Negative")
+=COUNTIF(A2:A100, "Uk")		(case-insensitive)
+=SUMIF(A2:A100, ">3000")		(operator in quotes)
+=SUMIF(A2:A100, "*cars", E2:E100)		sum from col E where col A ends in cars

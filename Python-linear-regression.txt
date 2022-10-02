@@ -1,0 +1,239 @@
+1.
+Linear Regression
+from sklearn.linear_model import LinearRegresion
+lm = LinearRegression()
+lm.fit(df[[x]], df[y])
+Yhat = lm.predict(df[[x]])
+
+lm.intercept_
+lm.coef_
+
+
+
+2.
+Multiple Linear Regression
+lm = LinearRegression()
+Z = df[[x,y,z]]
+lm.fit(Z, df[t])
+
+
+
+3.
+Model evaluation using visualization
+
+
+Regresison plot-shows relationship, strength, direction
+
+import seaborn as sns
+%matplotlib inline
+plt.figure(figsize=(width, height))	#Optional
+sns.regplot(x = '', y = '', data = df)
+plt.ylim(0,)		#Optional
+
+
+Residual plot
+random spread - linear model appropriate
+curve - non-linear model more appropriate
+spread increasing with x-axis - model wrong
+
+plt.figure(figsize=(width, height))	#Optional
+sns.residplot(x=df['x'], y=df['y'])
+OR
+sns.residplot(x = '', y = '', data = df)
+
+
+Distribution plot-used for multiple linear regression
+
+Y_hat = lm.predict(Z)
+plt.figure(figsize=(width, height))
+# plots a distribution without hist two times
+ax1 = sns.distplot(df['y'], hist = False, color = 'r', label = 'Actual Value')
+sns.distplot(Y_hat, hist = False, color = 'b', label = 'Fitted Value', ax = ax1)
+
+
+#Optional function
+def DistributionPlot(RedFunction, BlueFunction, RedName, BlueName, Title):
+    width = 12
+    height = 10
+    plt.figure(figsize=(width, height))
+
+    ax1 = sns.distplot(RedFunction, hist=False, color="r", label=RedName)
+    ax2 = sns.distplot(BlueFunction, hist=False, color="b", label=BlueName, ax=ax1)
+
+    plt.title(Title)
+    plt.xlabel('Price (in dollars)')
+    plt.ylabel('Proportion of Cars')
+
+    plt.show()
+    plt.close()
+
+
+#Optional arguments
+plt.title('')
+plt.xlabel('')
+plt.ylabel('')
+plt.show()
+plt.close()
+
+
+
+4.
+Polynomial regression
+
+x = df['']
+y = df['']
+f = np.polyfit(x, y, 3)
+p = np.poly1d(f)
+print(p)
+
+
+#Optional
+def PlotPolly(model, independent_variable, dependent_variabble, Name):
+    x_new = np.linspace(15, 55, 100)
+    y_new = model(x_new)
+
+    plt.plot(independent_variable, dependent_variabble, '.', x_new, y_new, '-')
+    plt.title('Polynomial Fit with Matplotlib for Price ~ Length')
+    ax = plt.gca()
+    ax.set_facecolor((0.898, 0.898, 0.898))
+    fig = plt.gcf()
+    plt.xlabel(Name)
+    plt.ylabel('Price of Cars')
+
+    plt.show()
+    plt.close()
+#Optional
+PlotPolly(p, x, y, 'highway-mpg')
+
+
+Polynomial transform on multiple features
+
+from sklearn.preprocessing import PolynomialFeatures
+pr=PolynomialFeatures(degree=2)
+pr
+x_train=pr.fit_transform(df[['predictor']])
+
+poly = LinearRegression()
+poly.fit(x_train_pr, y_train)
+
+
+5.
+Pipeline
+
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
+Input=[('scale',StandardScaler()), ('polynomial', PolynomialFeatures(include_bias=False)), ('model',LinearRegression())]
+pipe=Pipeline(Input)
+pipe
+
+Z = Z.astype(float)
+pipe.fit(Z,y)
+ypipe=pipe.predict(Z)
+
+#Pipeline for linear regression
+Input = [('scale', StandardScaler()), ('model', LinearRegression())]
+pipe = Pipeline(Input)
+pipe.fit(Z, y)
+ypipe = pipe.predict(Z)
+ypipe[:10]
+
+
+
+6.
+Model evaluation
+
+#used for linear and multilinear
+mean square error
+from sklearn.metrics import mean_squared_error
+mean_squared_error(df['y'], Yhat)
+
+r-squared
+# comparing regression model to simple model
+lm.score(df[[x]], df[y])
+
+#polynomial fit
+from sklearn.metrics import r2_score
+r_squared = r2_score(y, p(x))
+print('The R-square value is: ', r_squared)
+
+mean_squared_error(df['price'], p(x))
+
+
+
+7.
+from sklearn.model_selection import train_test_split
+
+y_data = df['target']
+x_data = df.drop('target', axis = 1)
+
+x_train, x_test, y_train, y_test = train_test_split(x_data, y_data, test_size = 0.3, random_state = 0)
+
+
+
+8.
+cross_val_score
+
+#stores r squared values
+from sklearn.model_selection import cross_val_score
+
+scores = cross_val_score(lr, x_data, y_data, cv = 3)
+#cv is the no of partitions or folds
+#lr is a regression object can be anything lre,lm etc
+#each observation used for both training and testing
+print("The mean of the folds are", scores.mean(), "and the standard deviation is" , scores.std())
+
+
+#stores predicted values
+from sklearn.model_selection import cross_val_predict
+
+yhat = cross_val_predict(lr2e, x_data, y_data, cv = 3)
+
+
+
+9.
+Underfit: Model too simple to fit the data.
+Overfit: Model too flexible and fits the noise rather than the function.
+
+
+Rsqu_test = []
+
+order = [1, 2, 3, 4]
+for n in order:
+    pr = PolynomialFeatures(degree=n)
+    
+    x_train_pr = pr.fit_transform(x_train[['horsepower']])
+    
+    x_test_pr = pr.fit_transform(x_test[['horsepower']])    
+    
+    lr.fit(x_train_pr, y_train)
+    
+    Rsqu_test.append(lr.score(x_test_pr, y_test))
+
+plt.plot(order, Rsqu_test)
+plt.xlabel('order')
+plt.ylabel('R^2')
+plt.title('R^2 Using Test Data')
+
+
+
+10.
+Ridge regression
+#reduce overfitting by introducing bias
+#used when multicollinearity occurs
+
+from sklearn.linear_model import Ridge
+RidgeModel = Ridge(alpha = 0.1)
+RidgeModel.fit(X, y)
+Yhat = RidgeModel.predict(X)
+
+11.
+Grid Regression
+#iterating over hyperparameters via cross validation
+
+
+
+
+
+
+
+

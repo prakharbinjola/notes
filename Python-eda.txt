@@ -1,0 +1,62 @@
+check data types
+df.dtypes
+
+
+if numerical
+df[['col1','col2']].corr()
+sns.regplot(x = '', y = '', data = df)
+plt.ylim(0,)
+
+
+if categorical
+df1 = df['col'].value_counts().to_frame()
+df1.rename(columns={'old':'new'}, inplace = True)
+df1.index.name = ''
+# value_counts only works for series
+sns.boxplot(x = 'category', y = 'values', data = df)
+
+
+descriptive analysis
+df.describe()
+# df.describe(include = 'object')
+
+plt.scatter(df['x'], df['y'])
+plt.title('')
+plt.xlabel('')
+plt.ylabel('')
+
+
+groupby
+df['col'].unique()
+df_grp = df.groupby(['group_col1', 'group_col2'], as_index = False).mean()
+# instead of multi-index series we get dataframe putting as_index = False
+
+pivot table
+df_pivot = df_grp.pivot(index = 'group_col1', columns = 'group_col2')
+
+heat map
+plt.pcolor(df_pivot, cmap = 'RdBu')
+plt.colorbar()
+plt.show()
+
+OR
+sns.heapmap(df.corr(), annot = True)
+
+
+correlation coefficient
+pearson_coef, p_value = stats.pearsonr(df['x'], df['y'])
+
+
+categorical association
+scipy.stats.chi2_contingency(cont_table, correction = True)
+
+
+anova
+f, p_val = stats.f_oneway(df_grp.get_group('col1')['val_col'], df_grp.get_group('col2')['val_col'], df_grp.get_group('col3')['val_col'])
+
+
+
+
+
+
+

@@ -1,0 +1,93 @@
+1.
+SSH Key Generation
+
+ssh-keygen -t rsa -b 4096 -C "<your email address>"
+cd ~/.ssh
+ls			(or dir for windows)
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
+cat ~/.ssh/id_rsa.pub | clip
+
+
+
+2.
+Clone Repository
+
+cd Downloads
+git clone pastesshrepositorylinkhere
+
+
+
+3.
+Pushing file to Github
+
+type README.md	(read README file)
+notepad README.md		(open in notepad)
+
+(**)
+notepad test.txt
+git add test.txt
+git status			(Optional)
+git commit -m “write message here”
+git push
+
+
+
+4.
+Create a repository now without README.md file
+
+mkdir demo1
+cd demo1
+echo "# demo1" >> README.md
+
+(**)
+git init
+git add README.md
+git status
+git commit -m "first commit"
+git remote add origin git@github.com:mskill/demo1.git		(SSH link)
+git push -u origin master
+
+
+
+5.
+Pull file from remote to local repository
+
+git pull
+dir
+
+
+6.
+Branching
+
+git branch branchname
+git checkout branchname
+echo "#content">> filename.txt
+git push --set-upstream origin branchname		(To create the branch remotely)
+
+
+
+7.
+Merging
+
+git checkout master
+git merge mybranch
+git push
+
+
+
+8.
+Fork, add to local, push
+
+Copy SSH key of the forked repo
+git clone yoursshrepolink
+make changes
+git add .
+
+
+
+
+
+
+
+

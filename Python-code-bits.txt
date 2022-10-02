@@ -1,0 +1,127 @@
+1.
+for i,x in enumerate(['A','B','C']):
+	print(i,2*x)
+
+
+2.
+plt.gca().add_patch(plt.Circle((0, 0), radius=self.radius, fc=self.color))
+plt.axis('scaled')
+plt.show()
+
+
+3.
+formattedtext = text.replace('.', '').replace('!', '').replace(',', '').replace('?', '')
+
+wordList = self.fmtText.split(' ')
+freqMap = {}
+        
+for word in set(wordList):
+	freqMap[word] = wordList.count(word)
+
+
+4.
+data = requests.get("https://www.fishwatch.gov/api/species")
+results = json.loads(data.text)
+df = pd.DataFrame(results)
+df
+
+
+5.
+from bs4 import BeautifulSoup
+import requests
+html="<!DOCTYPE html><html></html>
+soup = BeautifulSoup(html, 'html.parser')
+soup.prettify()
+
+
+6.
+table="<table><tr></tr></table>
+table_bs = BeautifulSoup(table, 'html.parser')
+table_rows=table_bs.find_all('tr')
+table_bs.find_all(id="flight")
+table_bs.find_all(string="Florida")
+
+
+7.
+for link in soup.find_all('a',href=True):  # in html anchor/link is represented by the tag <a>
+   # print(link)
+    print(link.get('href')) # .get() prints key values for dict
+
+
+8.
+pd.read_html(url, match="10 most densely populated countries", flavor='bs4')[0]
+
+
+9.
+plt.gca().add_patch(plt.Rectangle((0, 0),self.width, self.height ,fc=self.color)) 
+plt.axis('scaled') 
+plt.show() 
+
+
+10.
+url = 
+soup = BeautifulSoup(data, 'html5lib')
+table = soup.find('table', {'data-test' : "historical-prices"})
+
+#Finding headers
+headers = []
+for i in table.find_all('th'):
+    title = i.text.strip()
+    headers.append(title)
+headers
+
+#initializing the dataframe
+df = pd.DataFrame(columns = headers)
+df
+
+#filling the table
+for row in table.find('tbody').find_all('tr'):                #iterating over rows
+    data = row.find_all('td')                                 #iterating over col
+    row_data = [col.text.strip() for col in data]             #getting col data
+    df.loc[len(df)] = row_data
+
+
+11.
+import mysql.connector
+conn = mysql.connector.connect(host = "localhost",port = 3306,user = "root",password = "12345",database='employees')
+cur = conn.cursor()
+df = pd.read_sql('select * from employees', conn)
+df.head()
+
+
+12.
+import pandas as pd
+import pymysql
+from sqlalchemy import create_engine
+engine = create_engine('mysql+pymysql://root:12345@localhost/employees')
+df = pd.read_sql('select * from employees', engine)
+df.head()
+
+
+13.
+!pip install ipython-sql
+%load_ext sql
+%sql ibm_db_sa://vfr33240:9ARXGZ6yqPxm6TSo@3883e7e4-18f5-4afe-be8c-fa31c41761d2.bs2io90l08kqb1od8lcg.databases.appdomain.cloud:31498/BLUDB?security=SSL
+
+
+14.
+df = pandas.read_csv('https://data.cityofchicago.org/resource/jcxq-k9xf.csv')
+df.to_sql("chicago_socioeconomic_data", con, if_exists='replace', index=False,method="multi")
+
+
+15.
+from pandasql import sqldf
+pysqldf = lambda q: sqldf(q, globals())
+q2 = pysqldf("""
+select
+from
+""")
+
+
+16.
+EDA via sweetviz
+import sweetviz as sv
+analyze_report = sv.analyze('output.html', open_browser = True)
+
+
+
