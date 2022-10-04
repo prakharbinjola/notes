@@ -226,6 +226,28 @@ RidgeModel = Ridge(alpha = 0.1)
 RidgeModel.fit(X, y)
 Yhat = RidgeModel.predict(X)
 
+
+#Optional function with progress bar
+from tqdm import tqdm
+
+Rsqu_test = []
+Rsqu_train = []
+dummy1 = []
+Alpha = 10 * np.array(range(0,1000))
+pbar = tqdm(Alpha)
+
+for alpha in pbar:
+    RigeModel = Ridge(alpha=alpha) 
+    RigeModel.fit(x_train_pr, y_train)
+    test_score, train_score = RigeModel.score(x_test_pr, y_test), RigeModel.score(x_train_pr, y_train)
+    
+    pbar.set_postfix({"Test Score": test_score, "Train Score": train_score})
+
+    Rsqu_test.append(test_score)
+    Rsqu_train.append(train_score)
+
+
+
 11.
 Grid Regression
 #iterating over hyperparameters via cross validation
