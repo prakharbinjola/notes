@@ -117,6 +117,7 @@ poly = LinearRegression()
 poly.fit(x_train_pr, y_train)
 
 
+
 5.
 Pipeline
 
@@ -134,6 +135,7 @@ ypipe=pipe.predict(Z)
 Input = [('scale', StandardScaler()), ('model', LinearRegression())]
 pipe = Pipeline(Input)
 pipe.fit(Z, y)
+pipe.score(Z, y)
 ypipe = pipe.predict(Z)
 ypipe[:10]
 
