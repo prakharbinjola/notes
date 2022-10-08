@@ -6,6 +6,8 @@ if numerical
 df[['col1','col2']].corr()
 sns.regplot(x = '', y = '', data = df)
 plt.ylim(0,)
+#finding feature having the most correlation with a col
+df.corr()['col'].sort_values()
 
 
 if categorical
