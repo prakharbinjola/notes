@@ -225,6 +225,7 @@ from sklearn.linear_model import Ridge
 RidgeModel = Ridge(alpha = 0.1)
 RidgeModel.fit(X, y)
 Yhat = RidgeModel.predict(X)
+Ridge.score(X, y)
 
 
 #Optional function with progress bar
@@ -247,15 +248,26 @@ for alpha in pbar:
     Rsqu_train.append(train_score)
 
 
+#Ridge after polynomial transformation
+pr=PolynomialFeatures(degree=2)
+x_train_pr=pr.fit_transform(x_train[['']])
+x_test_pr=pr.fit_transform(x_test[['']])
+RidgeModel = Ridge(alpha=10)
+RidgeModel.fit(x_train_pr, y_train)
+yhat = RidgeModel.predict(x_test_pr)
+RidgeModel.score(x_test_pr, y_test)
+
+
 
 11.
-Grid Regression
+Grid Search
 #iterating over hyperparameters via cross validation
 
-
-
-
-
-
-
-
+from sklearn.model_selection import GridSearchCV
+parameters1= [{'alpha': [0.001,0.1,1, 10, 100, 1000, 10000, 100000, 100000]}]
+#list of common parameters
+RR = Ridge()
+Grid1 = GridSearchCV(RR, parameters1, cv=4)
+Grid1.fit(x_data[[]], y_data)
+BestRR = Grid1.best_estimator_
+BestRR.score(x_test[[]], y_test)
