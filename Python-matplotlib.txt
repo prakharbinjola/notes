@@ -1,0 +1,33 @@
+1.
+Line plots
+
+%matplotlib inline 
+
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+
+print(plt.style.available)
+mpl.style.use(['ggplot'])		#or plt.style.use([])
+
+df.plot(kind = 'line')
+#line default, optional figsize=(,)
+
+df_CI = df_CI.transpose()	#need to transpose for dataframe
+
+df.index = df.index.map(int)	#convert x-axis to int
+plt.text(x, y, label)
+
+
+df_top5 = df.sort_values(by='Colname', ascending=False).head()
+#sort Top 5 values, default axis=0
+df_top5 = df_top5['colsneeded'].transpose() 
+
+
+
+
+
+
+
+
+
+
