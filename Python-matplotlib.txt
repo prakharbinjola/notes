@@ -5,12 +5,14 @@ df.rename({oldname: newname}, inplace=True)
 df.isnull().sum()
 df.set_index('Colname', inplace=True)
 df.index.name = None
+all(isinstance(column, str) for column in df.columns)
 df.columns = list(map(str, df.columns))
 
 
 
 1.
-Line plots
+Line plot
+
 
 %matplotlib inline 
 
@@ -18,7 +20,7 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 
 print(plt.style.available)
-mpl.style.use(['ggplot'])		#or plt.style.use([])
+mpl.style.use('ggplot')		#or plt.style.use([])
 
 df.plot(kind = 'line')
 #line default, optional figsize=(,)
@@ -36,6 +38,40 @@ df_top5.plot(figsize=(14, 8))	#figsize optional
 plt.title('')
 plt.ylabel('')
 plt.xlabel('')
+
+
+
+2.
+Area plot
+#usually used as a cumulative plot
+
+
+df.index = df.index.map(int)
+df.plot(kind='area', stacked=False, figsize=(20,10))
+plt.title('')
+plt.ylabel('')
+plt.xlabel('')
+plt.show()
+#stacked default=True for area plots only
+#alpha=0.5 default transparency
+
+
+#same plot using artist layer(object oriented)
+ax = df.plot(kind='area', stacked=False, alpha=0.55, figsize=(20,10))
+
+ax.set_title('')
+ax.set_ylabel('')
+ax.set_xlabel('')
+
+
+
+3.
+Histogram
+
+
+
+
+
 
 
 
