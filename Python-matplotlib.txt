@@ -1,3 +1,14 @@
+Prerequsite data wrangling
+df.drop([], axis=1, inplace=True)
+df.rename({oldname: newname}, inplace=True)
+#df['Total'] = df.sum(axis=1)	#Optional new col
+df.isnull().sum()
+df.set_index('Colname', inplace=True)
+df.index.name = None
+df.columns = list(map(str, df.columns))
+
+
+
 1.
 Line plots
 
@@ -21,7 +32,10 @@ plt.text(x, y, label)
 df_top5 = df.sort_values(by='Colname', ascending=False).head()
 #sort Top 5 values, default axis=0
 df_top5 = df_top5['colsneeded'].transpose() 
-
+df_top5.plot(figsize=(14, 8))	#figsize optional
+plt.title('')
+plt.ylabel('')
+plt.xlabel('')
 
 
 
