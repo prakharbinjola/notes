@@ -42,8 +42,7 @@ plt.xlabel('')
 
 
 2.
-Area plot
-#usually used as a cumulative plot
+Area plot	#usually used as a cumulative plot
 
 
 df.index = df.index.map(int)
@@ -66,7 +65,55 @@ ax.set_xlabel('')
 
 
 3.
-Histogram
+Histogram	#frequency distribution
+
+
+count, bin_edges = np.histogram(df[], 10)
+#optional for custom x-axis
+#second argument for no of bins default 10
+df[].plot(kind='hist', figsize=(), xticks=bin_edges, bins=, alpha=, color=[])
+#xticks and bins optional
+
+
+#for full list of colors
+import matplotlib as mpl
+for name, hex in mpl.colors.cnames.items():
+    print(name, hex)
+
+
+count, bin_edges = np.histogram(df, 15)
+xmin = bin_edges[0] - 10
+xmax = bin_edges[-1] + 10
+df.plot(kind='hist', xlim=(xmin, xmax))
+#adding buffer for asthetics
+
+
+
+4.
+Bar plot
+df_iceland.plot(kind='bar', figsize=(10, 6), rot=90)
+
+# Annotate arrow
+plt.annotate('',  # s: str. will leave it blank for no text
+             xy=(32, 70),  # place head of the arrow at point (year 2012 , pop 70)
+             xytext=(28, 20),  # place base of the arrow at point (year 2008 , pop 20)
+             xycoords='data',  # will use the coordinate system of the object being annotated
+             arrowprops=dict(arrowstyle='->', connectionstyle='arc3', color='blue', lw=2)
+             )
+
+# Annotate Text
+plt.annotate('',  # text to display
+             xy=(28, 30),  # start the text at at point (year 2008 , pop 30)
+             rotation=72.5,  # based on trial and error to match the arrow
+             va='bottom',  # want the text to be vertically 'bottom' aligned
+             ha='left',  # want the text to be horizontally 'left' algned.
+             )
+
+
+for index, value in enumerate(df): 
+    label = format(int(value), ',')
+    plt.annotate(label, xy=(value - 47000, index - 0.10), color='white')
+
 
 
 
