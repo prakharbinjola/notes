@@ -13,7 +13,7 @@ df.columns = list(map(str, df.columns))
 1.
 Line plot
 
-
+***
 %matplotlib inline 
 
 import matplotlib as mpl
@@ -155,6 +155,37 @@ df.describe()	#to check
 
 Subplots
 #for subplots we work with artist layer
+fig = plt.figure()	#create fig
+ax0 = fig.add_subplots(1,2,1)
+ax1 = fig.add_subplots(122)
+
+df.plot(kind='', ax=ax0)
+ax0.set_title()
+ax0.set_xlabel()
+ax0.set_ylabel()
+
+df.plot(kind='', ax=ax1)
+ax1.set_title()
+ax1.set_xlabel()
+ax1.set_ylabel()
+
+
+
+7.
+Scatter plot
+
+df.plot(kind='scatter', x='', y='', figsize=(10,6), color='')
+
+#optional for regression line
+x = df[]
+y = df[]
+fit = np.polyfit(x, y, deg=1)
+df.plot(kind='scatter', x='', y='', figsize=(10,6), color='darkblue')
+plt.plot(x, fit[0] * x + fit[1], color='red')
+plt.annotate('y={0:.0f} x + {1:.0f}'.format(fit[0], fit[1]), xy=(2000, 150000))
+plt.show()
+
+
 
 
 
