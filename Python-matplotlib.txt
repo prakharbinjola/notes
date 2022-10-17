@@ -74,7 +74,7 @@ count, bin_edges = np.histogram(df[], 10)
 df[].plot(kind='hist', figsize=(), xticks=bin_edges, bins=, alpha=, color=[])
 #xticks and bins optional
 
-
+***
 #for full list of colors
 import matplotlib as mpl
 for name, hex in mpl.colors.cnames.items():
@@ -186,6 +186,36 @@ plt.annotate('y={0:.0f} x + {1:.0f}'.format(fit[0], fit[1]), xy=(2000, 150000))
 plt.show()
 
 
+
+8.
+Bubble plot
+
+### type your answer here
+
+# Brazil
+ax0 = df_can_t.plot(kind='scatter',
+                    x='Year',
+                    y='',
+                    figsize=(14, 8),
+                    alpha=0.5,  # transparency
+                    color='green',
+                    s=norm_china * 2000 + 10,  # pass in norm weights 
+                    xlim=(1975, 2015)
+                    )
+
+# Argentina
+ax1 = df_can_t.plot(kind='scatter',
+                    x='Year',
+                    y='',
+                    alpha=0.5,
+                    color="blue",
+                    s=norm_data * 2000 + 10,
+                    ax=ax0
+                    )
+
+ax0.set_ylabel('')
+ax0.set_title('')
+ax0.legend(['', ''], loc='upper left', fontsize='x-large')
 
 
 
