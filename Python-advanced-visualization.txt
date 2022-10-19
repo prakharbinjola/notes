@@ -115,3 +115,31 @@ plt.show()
 
 
 
+3.
+Map
+
+import folium
+
+map = folium.Map(location=[lat, long], zoom_start=12)
+#optional tiles Stamen Toner or Stamen Terrain
+
+
+incidents = folium.map.FeatureGroup()
+
+for lat, lng, in zip(df['latcol'], df['lngcol']):
+    incidents.add_child(
+        folium.features.CircleMarker(
+            [lat, lng],
+            radius=5, # circle size
+            color='yellow',
+            fill=True,
+            fill_color='blue',
+            fill_opacity=0.6
+        )
+    )
+#adding markers optional
+for lat, lng, label in zip(df['lat'], df['lng'], df['cat']):
+    folium.Marker([lat, lng], popup=label).add_to(sanfran_map)    
+ 
+# add incidents to map
+map.add_child(incidents)

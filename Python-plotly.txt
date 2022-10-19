@@ -1,0 +1,58 @@
+1.
+Scatter plot
+plotly.graph_objects
+
+import plotly.graph_objects as go
+
+fig = go.Figure(data=go.scatter(x=df[],y=df[], mode='markers', marker=dict(color='red')))
+fig.update_layout(title='', xaxis_title='', yaxis_title='')
+fig.show()
+
+
+
+2.
+Line plot
+plotly.graph_objects
+
+import plotly.graph_objects as go
+ldata = df.groupby('grpcol')['col'].mean().reset_index()
+
+fig = go.Figure(data=go.Scatter(x=ldata[], y=ldata=[], mode='lines'))
+fig.update_layout(title='', xaxis_title='', yaxis_title='')
+fig.show()
+
+
+
+3.
+Bar plot
+plotly.express
+
+import plotly.express as px
+bar_data = df.groupby('')[''].sum().reset_index()
+
+fig = px.bar(bar_data, x='', y='', title'')
+fig.show()
+
+
+
+4.
+Bubble plot
+plotly.express
+
+import plotly.express as px
+bub_data = 
+
+fig = px.scatter(bub_data, x='', y='', size='', title='')
+fig.show()
+#hover_name updates hover tooltip
+
+
+
+
+
+
+
+
+
+
+
