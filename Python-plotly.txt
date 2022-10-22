@@ -48,8 +48,25 @@ fig.show()
 
 
 
+5.
+Histogram
+
+fig = px.histogram(df, x=df[''])
+fig.show()
 
 
+
+6.
+Pie chart
+fig = px.pie(df, values='', names='colname', title='')
+fig.show()
+
+
+7.
+Sunburst chart
+fig = px.sunburst(df, path=['', ''], values=')
+fig.show()
+#path shows hierarchy values
 
 
 
