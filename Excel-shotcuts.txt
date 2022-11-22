@@ -22,3 +22,7 @@
 9.	INDEX needs numeric positions.
 	MATCH finds those positions.
 	MATCH is nested inside INDEX.
+
+10.	CTRL + `	To show formulae in worksheet
+
+11.	CTRL + SHIFT + &	To add borders outside the selected cells
