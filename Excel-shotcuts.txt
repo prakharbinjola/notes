@@ -26,3 +26,7 @@
 10.	CTRL + `	To show formulae in worksheet
 
 11.	CTRL + SHIFT + &	To add borders outside the selected cells
+
+12.	CTRL  + SHIFT + =	To insert rows or columns
+
+13.	CTRL + F - Find, CTRL + H - Find and Replace
