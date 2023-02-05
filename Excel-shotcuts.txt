@@ -30,3 +30,10 @@
 12.	CTRL  + SHIFT + =	To insert rows or columns
 
 13.	CTRL + F - Find, CTRL + H - Find and Replace
+
+14.	CTRL + SHIFT + L	To add or remove filter headers
+
+15.	Format painter to copy conditional formatting
+
+16.	SHIFT + SPACE	To select current row
+	CTRL + SPACE	To select current column
