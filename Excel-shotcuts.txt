@@ -37,3 +37,25 @@
 
 16.	SHIFT + SPACE	To select current row
 	CTRL + SPACE	To select current column
+
+17.	SHIFT + F11	To add new sheet
+
+18.	CTRL + Page Down/Up	To move between sheets
+
+19.	ALT + HOR	To rename sheet
+
+20.	ALT + HDS	To delete sheet
+
+21.	Hold down SHIFT while selecting the sheets to group sheets
+
+22.	ALT + HOUC	To hide col
+
+23.	ALT + HOUL	To unhide col
+
+24.	ALT + HOUS	To hide sheet
+
+25.	Group sheet whle entering formula to apply 3D formula
+
+26.	CTRL + SHIFT + F3	Create from selection(Named Ranges)
+
+27.	F3	Shows all named ranges
