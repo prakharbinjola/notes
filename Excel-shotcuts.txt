@@ -59,3 +59,21 @@
 26.	CTRL + SHIFT + F3	Create from selection(Named Ranges)
 
 27.	F3	Shows all named ranges
+
+28.	CTRL + T	Convert to table
+
+29.	ALT + A + M	Remove duplicates
+
+30.	ALT + N + V	Pivot Table
+
+31.	ALT + A + E	Text to columns
+
+32.	ALT + A + S + S	Open sort and filter dialog box
+
+33.	ALT + A + C	Remove filters without affecting the header row
+
+34.	ALT + A + B	Subtotal(Sort the data first)
+
+35.	CTRL + ALT + V	Paste Special
+
+36.	CTRL + .	Move at ends of a table
